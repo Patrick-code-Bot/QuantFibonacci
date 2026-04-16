@@ -1,0 +1,28 @@
+# QuantFibonacci 策略运行依赖
+# Python 3.12-3.14, Linux glibc >= 2.35 / macOS 15+ / Windows Server 2022+
+# 安装：pip install -r requirements.txt
+# 或：   uv pip install -r requirements.txt
+
+# 核心 —— NautilusTrader 已原生集成 Binance / OKX / Bybit / Hyperliquid 等
+# 该版本经项目验证可用；如需更新请同时核对 indicators.py 的导入路径
+nautilus_trader==1.225.0
+
+# 数据处理（backtest.py 用于 CSV 载入 + 多周期 resample）
+pandas>=2.2,<3.0
+
+# nautilus_trader 的依赖会自动装以下包，这里显式钉版本以保证一致：
+numpy>=1.26,<2.0
+pyarrow>=23.0
+msgspec>=0.20,<1.0
+
+# 自动波段识别（swing_detector.py）+ Telegram 告警（notifier.py）
+# 仅用 stdlib（urllib / threading / json），无需额外依赖
+
+# -------- 可选 --------
+# 如需图表/净值曲线可视化，取消下行注释：
+# nautilus_trader[visualization]
+
+# 如需 Interactive Brokers / Polymarket / Betfair 适配器，取消对应行：
+# nautilus_trader[ib,docker]
+# nautilus_trader[polymarket]
+# nautilus_trader[betfair]
